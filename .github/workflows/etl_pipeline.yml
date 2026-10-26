@@ -1,38 +1,30 @@
 name: Executar ETL Diário - Social Metrics
 
-# Define quando o workflow será acionado
 on:
-  workflow_dispatch: # Permite rodar manualmente clicando em um botão no GitHub
+  workflow_dispatch:
   schedule:
-    - cron: '0 9 * * *' # Roda todos os dias às 09:00 UTC (ajuste o horário se preferir)
+    - cron: '0 9 * * *'
 
 jobs:
   run-etl:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Baixa o código do repositório
       - name: Checkout do código
         uses: actions/checkout@v4
 
-      # 2. Configura o Python
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      # 3. Instala o gerenciador de dependências 'uv'
-      - name: Instalar o Astral UV
-        uses: astral-sh/setup-uv@v5
-
-      # 4. Instala as dependências do projeto usando o uv
       - name: Instalar dependências
-        run: uv sync
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      # 5. Executa o seed de perfis e o pipeline principal passando a SECRET do Supabase
       - name: Executar Pipeline ETL
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          PYTHONPATH=. uv run python src/seed_perfis.py
-          PYTHONPATH=. uv run python main.py
+          PYTHONPATH=. python main.py
