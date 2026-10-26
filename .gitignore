@@ -1,0 +1,18 @@
+# Credenciais e Cofre de Ambiente
+load_env.sh
+.env
+
+# Ambiente Virtual e Dependências
+.venv/
+venv/
+ENV/
+
+# Cache do Python e Compilações
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs e Arquivos do Looker Studio / Sistema
+.DS_Store
+*.log

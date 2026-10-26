@@ -1,0 +1,23 @@
+{
+  "use_mock": true,
+  "perfis": [
+    {
+      "perfil_id": 1,
+      "plataforma": "instagram",
+      "nome_perfil": "@sua_marca_oficial",
+      "ativo": true
+    },
+    {
+      "perfil_id": 2,
+      "plataforma": "linkedin",
+      "nome_perfil": "Sua Empresa S.A.",
+      "ativo": true
+    },
+    {
+      "perfil_id": 3,
+      "plataforma": "tiktok",
+      "nome_perfil": "Sua Empresa S.A.",
+      "ativo": true
+    }
+  ]
+}

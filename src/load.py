@@ -3,6 +3,9 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from src.config import Config
 
+# Cria a engine do banco usando a URL segura do cofre
+engine = create_engine(Config.DATABASE_URL)
+
 def get_db_engine():
     """Cria e retorna a engine de conexão com o PostgreSQL do Supabase."""
     db_url = Config.DATABASE_URL
